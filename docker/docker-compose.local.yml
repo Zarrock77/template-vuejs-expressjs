@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: docker/Dockerfile.local
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

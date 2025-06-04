@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: docker/Dockerfile.prod
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
