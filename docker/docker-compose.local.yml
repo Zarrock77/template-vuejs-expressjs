@@ -8,7 +8,19 @@ services:
       - /app/node_modules
     restart: always
     ports:
-      - "8080:8080"
+      - '8081:8081'
+    networks:
+      - my-network
+  backend:
+    build:
+      context: ../backend
+      dockerfile: docker/Dockerfile.local
+    volumes:
+      - ../backend:/app
+      - /app/node_modules
+    restart: always
+    ports:
+      - '8081:8081'
     networks:
       - my-network
 
